@@ -1,0 +1,34 @@
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+IS521 Government BBS
+{% endblock %}
+
+{% block content %}
+<h1>Prove that you are {{ auth_id }}</h1>
+<div class="col-sm-8 col-sm-offset-2">
+    <div>Encrypted nonce:</div>
+    <pre>{{ enc_nonce }}</pre>
+</div>
+<br>
+
+<div class="col-sm-8 col-sm-offset-2">
+    <div>Service public key:</div>
+    <pre>{{ service_pubkey }}</pre>
+</div>
+
+<div class="col-sm-8 col-sm-offset-2">
+    <form action="{% url 'auth_resp' %}" method="post">
+        <p>
+        <div>Send encrypted nonce:</div>
+        <textarea class="form-control" name="auth_resp"></textarea>
+        </p>
+
+        {% csrf_token %}
+
+        <p>
+        <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>
+{% endblock %}

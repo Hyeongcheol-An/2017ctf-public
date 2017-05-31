@@ -1,0 +1,39 @@
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+Get notarized
+{% endblock %}
+
+{% block content %}
+<h1>Are you government official {{ request.user.username }} {% if nick %} (nickname : {{ nick }}) {% endif %}?</h1>
+
+{% if error %}
+<div class="alert alert-danger">
+    Sorry, you didn't get notorized by notary service.
+</div>
+{% endif %}
+
+<div class="col-sm-8 col-sm-offset-2">
+    <div>Sign following JSON document:</div>
+    <pre class="text-left">
+{
+  "id": "{{ request.user.username }}",
+  "pubkey": "(your public key in ascii-armored form)"
+}</pre>
+</div>
+
+<div class="col-sm-8 col-sm-offset-2">
+    <form action="{% url 'notarize' %}" method="post">
+        <p>
+        <div>Send signed document:</div>
+        <textarea class="form-control" name="proof"></textarea>
+        </p>
+
+        {% csrf_token %}
+
+        <p>
+        <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+Post list
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover table-responsive">
+    <caption class="text-center"><h1>Write Your Opinion</h1><h4>Admin is watching</h4></caption>
+    <thead>
+        <tr>
+            <th class="text-center col-md-2 col-sm-2 col-xs-2 col-lg-2">NO</th>
+            <th class="text-center col-md-6 col-sm-6 col-xs-6 col-lg-6">Title</th>
+            <th class="text-center col-md-4 col-sm-4 col-xs-4 col-lg-4">Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.id }}</td>
+            <td><a href="{% url 'read' post.id %}">{{ post.title }}</a></td>
+            <td>{{ post.author.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+    <a href="/bbs/write" style="color:white"><button type="button" class="btn btn-success btn-block">Write</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import sys
+from server.main import server
+from getpass import getpass
+
+try:
+    # Get a passphrase from commandline argument
+    if len(sys.argv) == 2:
+        service_ip = str(sys.argv[1])
+        passphrase = getpass("Input PGP key passphrase : ")
+        mysql_pw = getpass("Input MySQL password : ")
+        server(passphrase, mysql_pw, service_ip)
+    else:
+        print ("Give me service IP")
+except KeyboardInterrupt:
+    print ("Ctrl_C pressed ... Shutting Down")

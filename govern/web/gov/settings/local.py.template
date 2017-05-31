@@ -1,0 +1,7 @@
+from .prod import *
+
+SECRET_KEY = 'asdfqewr'
+STUDENT_PUBKEY_DIR = '/opt/gov/keys'
+SERVICE_PUBKEY = '/opt/gov/service.pub'
+SERVICE_PRIVKEY = '/opt/gov/service.key'
+SERVICE_PRIVKEY_PASSPHRASE = 'asdf'

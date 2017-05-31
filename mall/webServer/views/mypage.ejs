@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> My Page: Flag are us </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/order.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage">Flagrus</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">WELCOME <%= user %></a></li>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/#product">PRODUCT</a></li>
+            <li><a href="/#contact">CONTACT</a></li>
+            <li><a href="/cart">CART</a></li>
+            <li><a href="/order">ORDERS</a></li>
+            <li><a href="/mypage">MYPAGE</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+          </ul>
+        </div> <!-- end of menues -->
+      </div>
+    </nav>
+
+    <div id="mypageMain" class="bg-1">
+      <div class="container">
+        <h3 class="text-center"> My page </h3>
+        <p class="text-center"> See your msgs </p>
+
+        <% messages.forEach( function(message) { %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="glyphicon glyphicon-time"></span>
+            <%= message.added_time %>
+          </div>
+
+          <div class="panel-body">
+            <%= message.msg %>
+          </div>
+        </div>
+        <% }) %>
+
+        <!--
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="glyphicon glyphicon-time"></span>
+            2017-04-15 00:00:00
+          </div>
+
+          <div class="panel-body">
+            Yo man~ How long did you play Planet craft 2?
+          </div>
+        </div>
+        -->
+
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block content %}
+<h1>Welcome {{ auth_id }}</h1>
+<h4>Set your password</h4>
+
+{% if error %}
+<div class="alert alert-danger">
+    Password does not mathced. Please write the same password.
+</div>
+{% endif %}
+
+<form action="{% url 'auth_success' %}" method="post">
+    <div class="form-group">
+        <label for="Content">Password</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="Content">Password check</label>
+        <input type="password" name="password_check" class="form-control">
+    </div>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+Error Print Page
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger">
+    {{ error_msg }}
+</div>
+{% endblock %}

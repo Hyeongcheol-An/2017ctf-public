@@ -1,0 +1,30 @@
+{% extends 'bbs/base.html' %}
+
+{% block title %}
+Read post
+{% endblock %}
+
+{% block content %}
+<h1>Read post</h1>
+<div class="form-group">
+    <label for="Content">Title</label>
+    {% autoescape off %}
+    <pre>{{ post.title }}</pre>
+    {% endautoescape %}
+</div>
+<div class="form-group">
+    <label for="Content">Content</label>
+    {% autoescape off %}
+    <pre>{{ post.content }}</pre>
+    {% endautoescape %}
+</div>
+<a href="{% url 'list' %}" style="color:white">
+    <button type="button" class="btn btn-success">Back</button>
+</a>
+<a href="{% url 'delete' post.id %}" style="color:white">
+    <button type="button" class="btn btn-success">Delete</button>
+</a>
+<a href="{% url 'edit' post.id %}" style="color:white">
+    <button type="button" class="btn btn-success">Edit</button>
+</a>
+{% endblock %}
